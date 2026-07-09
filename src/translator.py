@@ -41,7 +41,47 @@ codon_table = {
     "CGA": "Arginine",
     "CGG": "Arginine",
 
+    # First base A
+    "AUU": "Isoleucine",
+    "AUC": "Isoleucine",
+    "AUA": "Isoleucine",
+    "AUG": "Methionine",
 
+    "ACU": "Threonine",
+    "ACC": "Threonine",
+    "ACA": "Threonine",
+    "ACG": "Threonine",
+
+    "AAU": "Asparagine",
+    "AAC": "Asparagine",
+    "AAA": "Lysine",
+    "AAG": "Lysine",
+
+    "AGU": "Serine",
+    "AGC": "Serine",
+    "AGA": "Arginine",
+    "AGG": "Arginine",
+
+    # First base G
+    "GUU": "Valine",
+    "GUC": "Valine",
+    "GUA": "Valine",
+    "GUG": "Valine",
+
+    "GCU": "Alanine",
+    "GCC": "Alanine",
+    "GCA": "Alanine",
+    "GCG": "Alanine",
+
+    "GAU": "Aspartic Acid",
+    "GAC": "Aspartic Acid",
+    "GAA": "Glutamic Acid",
+    "GAG": "Glutamic Acid",
+
+    "GGU": "Glycine",
+    "GGC": "Glycine",
+    "GGA": "Glycine",
+    "GGG": "Glycine"
 }
 
 def parse(sequence):
