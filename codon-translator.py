@@ -12,5 +12,5 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
 
-    print(translator.parse(args.sequence))
-    print(translator.translate())
+    codon_list = translator.parse(args.sequence)
+    print(translator.translate(codon_list))

@@ -47,5 +47,11 @@ codon_table = {
 def parse(sequence):
     return [sequence[i:i+3] for i in range(0, len(sequence), 3)]
 
-def translate():
-    return len(codon_table)
+def translate(codon_list):
+    amino_list = []
+    for codon in codon_list:
+        if codon in codon_table:
+            amino = codon_table[codon]
+            amino_list.append(amino)
+
+    return amino_list
