@@ -1,5 +1,7 @@
 from argparse import ArgumentParser
 
+from src import translator
+
 def parse_args():
     parser = ArgumentParser()
 
@@ -10,4 +12,4 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
 
-    print(args.sequence)    
+    print(translator.parse(args.sequence))
