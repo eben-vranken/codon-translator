@@ -12,12 +12,12 @@ codon_table = {
 
     "UAU": "Tyrosine",
     "UAC": "Tyrosine",
-    "UAA": "Stop (Ochre)",
-    "UAG": "Stop (Amber)",
+    "UAA": "Stop",
+    "UAG": "Stop",
 
     "UGU": "Cysteine",
     "UGC": "Cysteine",
-    "UGA": "Stop (Opal)",
+    "UGA": "Stop",
     "UGG": "Tryptophan",
 
     # First base C
@@ -84,6 +84,29 @@ codon_table = {
     "GGG": "Glycine"
 }
 
+amino_to_short = {
+    "Phenylalanine": "Phe",
+    "Leucine": "Leu",
+    "Serine": "Ser",
+    "Tyrosine": "Tyr",
+    "Cysteine": "Cys",
+    "Tryptophan": "Trp",
+    "Proline": "Pro",
+    "Histidine": "His",
+    "Glutamine": "Gln",
+    "Arginine": "Arg",
+    "Isoleucine": "Ile",
+    "Methionine": "Met",
+    "Threonine": "Thr",
+    "Asparagine": "Asn",
+    "Lysine": "Lys",
+    "Valine": "Val",
+    "Alanine": "Ala",
+    "Aspartic Acid": "Asp",
+    "Glutamic Acid": "Glu",
+    "Glycine": "Gly",
+}
+
 def parse(sequence):
     return [sequence[i:i+3] for i in range(0, len(sequence), 3)]
 
@@ -95,3 +118,14 @@ def translate(codon_list):
             amino_list.append(amino)
 
     return amino_list
+
+def shorten_to_three(amino_list):
+    shortened_list = []
+    for amino in amino_list:
+        if amino in amino_to_short:
+            abbrev = amino_to_short[amino]
+            amino_list.append(abbrev)
+        else:
+            shortened_list.append(amino)
+    
+    return shortened_list
