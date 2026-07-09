@@ -107,6 +107,30 @@ amino_to_short = {
     "Glycine": "Gly",
 }
 
+amino_to_single = {
+    "Alanine": "A",
+    "Arginine": "R",
+    "Asparagine": "N",
+    "Aspartic Acid": "D",
+    "Cysteine": "C",
+    "Glutamic Acid": "E",
+    "Glutamine": "Q",
+    "Glycine": "G",
+    "Histidine": "H",
+    "Isoleucine": "I",
+    "Leucine": "L",
+    "Lysine": "K",
+    "Methionine": "M",
+    "Phenylalanine": "F",
+    "Proline": "P",
+    "Serine": "S",
+    "Threonine": "T",
+    "Tryptophan": "W",
+    "Tyrosine": "Y",
+    "Valine": "V",
+    "Stop": "*",
+}
+
 def parse(sequence):
     return [sequence[i:i+3] for i in range(0, len(sequence), 3)]
 
@@ -125,6 +149,17 @@ def shorten_to_three(amino_list):
         if amino in amino_to_short:
             abbrev = amino_to_short[amino]
             amino_list.append(abbrev)
+        else:
+            shortened_list.append(amino)
+    
+    return shortened_list
+
+def shorten_to_fasta(amino_list):
+    shortened_list = []
+    for amino in amino_list:
+        if amino in amino_to_single:
+            letter = amino_to_single[amino]
+            amino_list.append(letter)
         else:
             shortened_list.append(amino)
     
