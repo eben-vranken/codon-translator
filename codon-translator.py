@@ -13,17 +13,23 @@ def parse_args():
     
     args = parser.parse_args()
 
-    if not args.sequence and not args.input:
+    if not args.sequence and not args.input or (args.sequence and args.input):
         parser.error("You must provide either a 'sequence' positional argument or an '--input' file.")
-
     return args
 
 if __name__ == "__main__":
     args = parse_args()
 
-    print(args.input)
 
-    codon_list = translator.parse(args.sequence)
+    sequence = ""
+    if args.sequence:
+        sequence = args.sequence
+    else:
+        with open(args.input) as fp:
+            for line in fp:
+                sequence += line.strip()
+
+    codon_list = translator.parse(sequence)
     amino_list = translator.translate(codon_list)
     if args.short:
         print(translator.shorten_to_three(amino_list))
