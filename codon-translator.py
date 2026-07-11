@@ -11,6 +11,7 @@ def parse_args():
     parser.add_argument("-f", "--fasta", action="store_true", help="Shorten the amino acids to their standard FASTA format")
     parser.add_argument("-i", "--input", help="The file from which to read the amino acids")
     parser.add_argument("-o", "--output", help="The output file location")
+    parser.add_argument("-d", "--dna", action="store_true", help="If input is DNA, not RNA")
 
     args = parser.parse_args()
 
@@ -28,7 +29,11 @@ if __name__ == "__main__":
     else:
         with open(args.input) as fp:
             for line in fp:
-                sequence += line.strip()
+                if line[0] != ">":
+                    sequence += line.strip()
+
+    if args.dna:
+        sequence = sequence.upper().replace("T", "U")
 
     codon_list = translator.parse(sequence)
     amino_list = translator.translate(codon_list)
