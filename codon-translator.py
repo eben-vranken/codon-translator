@@ -10,7 +10,8 @@ def parse_args():
     parser.add_argument("-s", "--short", action="store_true", help="Shorten the amino acids to their three letter abbreviations")
     parser.add_argument("-f", "--fasta", action="store_true", help="Shorten the amino acids to their standard FASTA format")
     parser.add_argument("-i", "--input", help="The file from which to read the amino acids")
-    
+    parser.add_argument("-o", "--output", help="The output file location")
+
     args = parser.parse_args()
 
     if not args.sequence and not args.input or (args.sequence and args.input):
@@ -31,9 +32,18 @@ if __name__ == "__main__":
 
     codon_list = translator.parse(sequence)
     amino_list = translator.translate(codon_list)
+
+    output = ""
+
     if args.short:
-        print(translator.shorten_to_three(amino_list))
+        output = translator.shorten_to_three(amino_list)
     elif args.fasta:
-        print(translator.shorten_to_fasta(amino_list))
+        output = translator.shorten_to_fasta(amino_list)
     else:
-        print(amino_list)
+        output = amino_list
+
+    if args.output:
+        with open(args.output, "w") as fp:
+            fp.write("\n".join(output))
+    else:
+        print(output)
