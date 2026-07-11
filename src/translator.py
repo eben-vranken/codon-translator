@@ -148,7 +148,7 @@ def shorten_to_three(amino_list):
     for amino in amino_list:
         if amino in amino_to_short:
             abbrev = amino_to_short[amino]
-            amino_list.append(abbrev)
+            shortened_list.append(abbrev)
         else:
             shortened_list.append(amino)
     
@@ -159,7 +159,7 @@ def shorten_to_fasta(amino_list):
     for amino in amino_list:
         if amino in amino_to_single:
             letter = amino_to_single[amino]
-            amino_list.append(letter)
+            shortened_list.append(letter)
         else:
             shortened_list.append(amino)
     
