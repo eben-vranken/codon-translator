@@ -10,6 +10,8 @@
 
 A small, zero-dependency Python CLI that takes a raw nucleotide sequence, splits it into codons, and translates each one to its amino acid using the standard genetic code, with output as full names, three-letter abbreviations, or single-letter FASTA-style codes.
 
+📝 [I wrote about the design decisions here](https://www.ebenvranken.be/blog/codon-to-amino)
+
 ## Install
 
 Clone the repository directly:
